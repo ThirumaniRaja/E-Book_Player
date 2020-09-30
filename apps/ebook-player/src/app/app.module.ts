@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { EBookPlayerModule } from '../../../../libs/e-book-player/src/lib/e-book-player.module';
 import { AppComponent } from './app.component';
 import { from } from 'rxjs';
+import { AngularSvgIconModule } from 'angular-svg-icon';
 import {LibConfigModule ,DynamicComponentManifest } from 'libs/lib-config/src/lib/lib-config/lib-config.module'
 
 const manifests: DynamicComponentManifest[] = [
@@ -16,6 +17,7 @@ const manifests: DynamicComponentManifest[] = [
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule,
+    AngularSvgIconModule,
     EBookPlayerModule,
     LibConfigModule.forRoot(manifests)
   ],

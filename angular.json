@@ -251,6 +251,41 @@
           "styleext": "scss"
         }
       }
+    },
+    "player-annotation-canvas": {
+      "projectType": "library",
+      "root": "libs/player-annotation-canvas",
+      "sourceRoot": "libs/player-annotation-canvas/src",
+      "prefix": "ebook-player",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/player-annotation-canvas/tsconfig.lib.json",
+              "libs/player-annotation-canvas/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/player-annotation-canvas/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/player-annotation-canvas/jest.config.js",
+            "tsConfig": "libs/player-annotation-canvas/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/player-annotation-canvas/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
     }
   },
   "cli": {

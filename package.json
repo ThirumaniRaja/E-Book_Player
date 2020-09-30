@@ -38,7 +38,7 @@
     "@angular/platform-browser-dynamic": "9.0.0",
     "@angular/router": "9.0.0",
     "@nrwl/angular": "9.1.0",
-    "angular-svg-icon": "^8.0.0",
+    "angular-svg-icon": "^9.2.0",
     "core-js": "^2.5.4",
     "jw-angular-pagination": "^1.1.0",
     "jw-paginate": "^1.0.4",

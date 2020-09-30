@@ -20,7 +20,10 @@
       "@ebook-player/e-book-player": ["libs/e-book-player/src/index.ts"],
       "@ebook-player/lib-config": ["libs/lib-config/src/index.ts"],
       "@ebook-player/viewer-pdf": ["libs/viewer-pdf/src/index.ts"],
-      "@ebook-player/core": ["libs/core/src/index.ts"]
+      "@ebook-player/core": ["libs/core/src/index.ts"],
+      "@ebook-player/player-annotation-canvas": [
+        "libs/player-annotation-canvas/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -43,7 +43,7 @@
     user-select: none;
   }
   
-  .page-link svg {
+  .page-link img {
     height: 16px;
     width: 15px;
   }
@@ -71,12 +71,12 @@
     width: 25px;
   }
   
-  .previous-item svg {
+  .previous-item img {
     transform: rotate(180deg);
   }
   
-  .previous-item svg g,
-  .next-item svg g {
+  .previous-item img g,
+  .next-item img g {
     fill: #fff;
   }
   
@@ -86,7 +86,7 @@
     justify-content: center;
   }
   
-  .pagination-disable svg {
+  .pagination-disable img {
     opacity: 0.5;
   }
   

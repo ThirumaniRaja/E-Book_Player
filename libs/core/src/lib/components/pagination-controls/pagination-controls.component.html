@@ -2,12 +2,12 @@
     <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
       <li class="page-item previous-item">
         <a (click)="setPage(pager.currentPage - 1)" class="page-link">
-          <svg-icon
+          <img
             class="arrow-icon"
             src="assets/images/ic.Navigate.Arrow.svg"
-            [applyCss]="true"
+
             [ngClass]="{ 'pagination-disable': pager.currentPage === 1 }"
-          ></svg-icon>
+          >
         </a>
       </li>
       <li
@@ -51,14 +51,13 @@
       </li>
       <li class="page-item next-item">
         <a (click)="setPage(pager.currentPage + 1)" class="page-link">
-          <svg-icon
+          <img
             class="arrow-icon"
             src="assets/images/ic.Navigate.Arrow.svg"
-            [applyCss]="true"
             [ngClass]="{
               'pagination-disable': pager.currentPage === pages.length
             }"
-          ></svg-icon>
+          >
         </a>
       </li>
     </ul>

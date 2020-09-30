@@ -1,12 +1,30 @@
 <div class="ebook-player-container">
     <div class="ebook-left-drawer" [class.open]="toggle.left">
-
+      <div class="toggler left">
+        <span class="rectangle" (click)="toggleBar('left')"></span>
+      </div>
+      <div class="nav-wrapper">
+        <ebook-player-book-details-nav
+          (openThumbnails)="toggleThumbnails($event)"
+          [numEbookPages]="numEbookPages"
+          [showThumbnails]="true"
+          style="display: contents;"
+        ></ebook-player-book-details-nav>
+        <ebook-player-page-thumbnails
+          *ngIf="showThumbnails && numEbookPages.length > 0"
+          [pdfSrc]="pdfFilePath"
+          [numEbookPages]="numEbookPages"
+          [selectedPage]="selectedPage"
+          [ebooks]="ebooks"
+        >
+        </ebook-player-page-thumbnails>
+      </div>
     </div>
     <div #middleDrawer class="ebook-middle-drawer">
         <div id="mainWorksheet" class="worksheet-player-container">
             <ebook-player-view-pdf
                 [pdfId]="pdfId"
-                [src]="pdfFilePath"
+                src="assets/pdf/ebook.pdf"
                 [renderText]="true"
                 [currentPage]="selectedPage"
                 [showAll]="true"
@@ -93,13 +111,13 @@
     <div
     class="ebook-right-drawer"
     [class.open]="toggle.right"
-    *ngIf="hasChapterResources"
+   
   >
   <div class="toggler right">
     <span class="rectangle" (click)="toggleBar('right')"></span>
   </div>
   <div class="resource-wrapper">
-    <div> resource list </div>
+    <div> Resource list </div>
   </div>
 </div>
 

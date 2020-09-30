@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Ebook } from '../../models/curriculum.interface';
+import { EbookService } from '../../services/ebook.service';
 
 @Component({
   selector: 'ebook-player-page-thumbnails',
@@ -6,10 +8,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./page-thumbnails.component.scss']
 })
 export class PageThumbnailsComponent implements OnInit {
-
-  constructor() { }
+  @Input('pdfSrc') set pdfSrc(value) {
+    this.pdfFilePath = value;
+  }
+  @Input() numEbookPages: [];
+  @Input() ebooks: Ebook[];
+  @Input() selectedPage: number;
+  public selectedThumbnail = 0;
+  public pdfFilePath: string;
+  constructor(private ebookService :EbookService) { }
 
   ngOnInit(): void {
+  }
+  public selectPage(i: number) {
+    this.ebookService.setPageSelection({
+      pageNumber: i + 1,
+      eventType: 'click'
+    });
   }
 
 }

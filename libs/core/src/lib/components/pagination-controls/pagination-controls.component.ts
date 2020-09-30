@@ -7,18 +7,18 @@ import {
   OnChanges,
   SimpleChanges
 } from '@angular/core';
-//import paginate from 'jw-paginate';
-export declare function paginate(totalItems: number, currentPage?: number, pageSize?: number, maxPages?: number): {
-  totalItems: number;
-  currentPage: number;
-  pageSize: number;
-  totalPages: number;
-  startPage: number;
-  endPage: number;
-  startIndex: number;
-  endIndex: number;
-  pages: number[];
-};
+import paginate from 'jw-paginate';
+// export declare function paginate(totalItems: number, currentPage?: number, pageSize?: number, maxPages?: number): {
+//   totalItems: number;
+//   currentPage: number;
+//   pageSize: number;
+//   totalPages: number;
+//   startPage: number;
+//   endPage: number;
+//   startIndex: number;
+//   endIndex: number;
+//   pages: number[];
+// };
 //export = paginate;
 
 
@@ -35,7 +35,7 @@ export class PaginationControlsComponent implements OnInit, OnChanges {
   @Input() quizQuestionStatuses: Array<string>;
   @Input('selectedPage') set selectedPage(value) {
     if (value.pageNumber !== this.pager.currentPage) {
-      this.setPageWithoutEmit(10);
+      this.setPageWithoutEmit(value.pageNumber);
     }
   }
 
@@ -78,13 +78,15 @@ export class PaginationControlsComponent implements OnInit, OnChanges {
   }
 
   private setPageWithoutEmit(page: number) {
-    console.log("setPageWithoutEmit",page)
+
     this.pager = paginate(
       this.pages.length,
       page,
       this.pageSize,
       this.maxPages
     );
+    console.log("setPageWithoutEmit",this.pager)
+
   }
 
   private setPage(page: number) {

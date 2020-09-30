@@ -8,13 +8,16 @@ import { PlayerResourceComponent } from './components/player-resource/player-res
 import { ResourceListComponent } from './components/resource-list/resource-list.component';
 import {LibConfigModule} from 'libs/lib-config/src/lib/lib-config/lib-config.module';
 import { ViewerPdfModule } from 'libs/viewer-pdf/src/lib/viewer-pdf.module';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { CoreModule } from 'libs/core/src/lib/core.module';
 import { from } from 'rxjs';
+
 
 @NgModule({
   imports: [CommonModule,
     CoreModule,
     ViewerPdfModule,
+    PdfViewerModule,
     LibConfigModule.forChild(EbookPlayerComponent),
   ],
   declarations: [ThumbnailScrollDirective, BookDetailsNavComponent, EbookPlayerComponent, PageThumbnailsComponent, PlayerResourceComponent, ResourceListComponent],

@@ -17,7 +17,7 @@ export class EbookPlayerComponent implements OnInit {
   };
   public hasChapterResources = false;
   public showThumbnails = false;
-  public numEbookPages: any[] = [];
+  public numEbookPages: any[] = [0,1,2,3,4,5,6,7];
   public pdfFilePath: any;
   public ebooks: Ebook[];
   public selectedEbook: Ebook;
@@ -55,8 +55,9 @@ export class EbookPlayerComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.numEbookPages = ['1','2','3','4','5','6','7'];
-    console.log("(((((((((ebokokkkkkkkkkkkkkkkkkkkk ");
+    this.numEbookPages = [0,1,2,3,4,5,6,7];
+    this.selectedPage = {eventType:"click",pageNumber:1}
+    console.log("(((((((((ebokokkkkkkkkkkkkkkkkkkkk ",this.numEbookPages);
     // this.commonService.ebookResourcelistFlag$.subscribe(data => {
     //   this.isebookResourceOpen = data;
     // });

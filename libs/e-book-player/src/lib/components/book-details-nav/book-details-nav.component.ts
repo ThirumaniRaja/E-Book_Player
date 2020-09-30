@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output ,EventEmitter} from '@angular/core';
+
 
 @Component({
   selector: 'ebook-player-book-details-nav',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./book-details-nav.component.scss']
 })
 export class BookDetailsNavComponent implements OnInit {
-
+  @Output() openThumbnails: EventEmitter<boolean> = new EventEmitter();
+  @Input() numEbookPages: Array<number>;
+  @Input() showThumbnails: boolean;
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.numEbookPages)
   }
+
 
 }
