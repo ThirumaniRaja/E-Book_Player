@@ -123,6 +123,134 @@
           }
         }
       }
+    },
+    "e-book-player": {
+      "projectType": "library",
+      "root": "libs/e-book-player",
+      "sourceRoot": "libs/e-book-player/src",
+      "prefix": "ebook-player",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/e-book-player/tsconfig.lib.json",
+              "libs/e-book-player/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/e-book-player/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/e-book-player/jest.config.js",
+            "tsConfig": "libs/e-book-player/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/e-book-player/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "lib-config": {
+      "projectType": "library",
+      "root": "libs/lib-config",
+      "sourceRoot": "libs/lib-config/src",
+      "prefix": "ebook-player",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/lib-config/tsconfig.lib.json",
+              "libs/lib-config/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/lib-config/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/lib-config/jest.config.js",
+            "tsConfig": "libs/lib-config/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/lib-config/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "viewer-pdf": {
+      "projectType": "library",
+      "root": "libs/viewer-pdf",
+      "sourceRoot": "libs/viewer-pdf/src",
+      "prefix": "ebook-player",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/viewer-pdf/tsconfig.lib.json",
+              "libs/viewer-pdf/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/viewer-pdf/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/viewer-pdf/jest.config.js",
+            "tsConfig": "libs/viewer-pdf/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/viewer-pdf/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "core": {
+      "projectType": "library",
+      "root": "libs/core",
+      "sourceRoot": "libs/core/src",
+      "prefix": "ebook-player",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/core/tsconfig.lib.json",
+              "libs/core/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/core/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/core/jest.config.js",
+            "tsConfig": "libs/core/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/core/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
     }
   },
   "cli": {

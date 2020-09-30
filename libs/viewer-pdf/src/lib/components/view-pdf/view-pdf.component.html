@@ -1,0 +1,25 @@
+<div
+  class="pdfContentArea"
+  ebookPlayerPdfScroll
+  #pdfWrapper
+  [pdfRendered]="pdfRendered"
+  [togglePdf]="togglePdf"
+  (scrollPageChange)="scrollPageChange($event)"
+  (resetPdfRender)="resetPdfRender($event)"
+  (setPdfCurrentPage)="setPdfCurrentPage($event)"
+  (gotoNextChapter)="gotoNextChapter($event)"
+>
+ 
+  <pdf-viewer
+    style="display: block;"
+    [id]="pdfId"
+    [src]="src"
+    [render-text]="renderText"
+    (after-load-complete)="afterLoadComplete($event)"
+    [(page)]="pdfViewerCurrentPage"
+    [show-all]="showAll"
+    (page-rendered)="pageRendered($event)"
+    [autoresize]="true"
+    [original-size]="false"
+  ></pdf-viewer>
+</div>

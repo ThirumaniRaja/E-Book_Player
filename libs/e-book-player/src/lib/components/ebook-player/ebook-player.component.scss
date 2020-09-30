@@ -1,0 +1,319 @@
+/* Global imports */
+@import '~libs/core/src/lib/css/variables';
+
+:host {
+  &.container-displayN {
+    display: none;
+  }
+}
+.ebook-player-container {
+  margin-top: 20px;
+  position: relative;
+  width: 60%;
+  height: 60%;
+  padding: 0px !important;
+  background: transparent !important;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.ebook-left-drawer {
+  width: 50%;
+  max-width: 0px;
+  min-width: 0;
+  position: absolute;
+  left: 0;
+  height: 100%;
+  transition: all var(--animation-timing-medium) ease-in-out;
+  z-index: 10;
+
+  &.open {
+    max-width: 650px;
+    min-width: 405px;
+  }
+}
+
+.ebook-right-drawer {
+  width: 50%;
+  max-width: 0px;
+  min-width: 0;
+  position: absolute;
+  right: 0;
+  height: 100%;
+  background: #22262a;
+  transition: all var(--animation-timing-medium) ease-in-out;
+  z-index: 10;
+
+  &.open {
+    max-width: 185px;
+    min-width: 185px;
+  }
+}
+
+.nav-wrapper {
+  width: 100%;
+  background: #22262a;
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  overflow: hidden;
+  left: 0;
+  top: 0;
+  height: 100%;
+  z-index: $player-layover-elements-z-index;
+
+  // &.show-thumbnails {
+  //   width: 35%;
+  // }
+}
+
+.ebook-middle-drawer {
+  background: transparent !important;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+
+  #mainWorksheet {
+    height: 100%;
+  }
+  .worksheet-player-container {
+    position: relative;
+    border: solid 1px gray;
+    background-color: tranparent;
+    background-color: #2f333a;
+    height: 100%;
+  }
+
+  #viewerContainer {
+    height: 100%;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 0 !important;
+}
+
+.toggler {
+  width: 8px;
+  position: absolute;
+  top: 50%;
+  bottom: 50%;
+  margin: auto 0;
+  z-index: $player-layover-elements-z-index;
+  height: 60px;
+
+  &.left {
+    right: -12px;
+  }
+  &.right {
+    left: -12px;
+  }
+}
+
+.rectangle {
+  height: 60px;
+  width: 8px;
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: block;
+}
+
+.ebook_pagination {
+  text-align: center;
+  // position: sticky;
+  bottom: 22vh;
+  left: 50%;
+}
+
+.resource-wrapper {
+  height: 100%;
+  overflow: hidden;
+}
+
+.separator {
+  border-left: 1px solid rgba(255, 255, 255, 0.25);
+  width: 0;
+  height: 35px;
+  margin: 0 10px;
+  overflow: auto;
+}
+
+.quick-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+
+  .selector {
+    position: relative;
+    flex: 1;
+    color: #ffffff;
+    padding-left: 5px;
+    height: 100%;
+    cursor: pointer;
+    display: flex;
+    margin-top: -2px;
+
+    > div {
+      color: #ffffff;
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+    }
+
+    b {
+      font-weight: bold;
+      text-transform: capitalize;
+    }
+
+    .tooltip {
+      position: absolute;
+      top: -112px;
+      right: -42px;
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 300ms ease-in-out;
+      z-index: 10;
+
+      &.open {
+        visibility: visible;
+        opacity: 1;
+      }
+
+      .arrow_box {
+        position: relative;
+        background: #22262a;
+        border: 2px solid #303439;
+        border-radius: 4px;
+        padding: 20px 10px;
+        min-width: 152px;
+      }
+      .arrow_box:after,
+      .arrow_box:before {
+        top: 100%;
+        left: 70%;
+        border: solid transparent;
+        content: ' ';
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+      }
+
+      .arrow_box:after {
+        border-color: rgba(34, 38, 42, 0);
+        border-top-color: #22262a;
+        border-width: 10px;
+        margin-left: -10px;
+      }
+      .arrow_box:before {
+        border-color: rgba(48, 52, 57, 0);
+        border-top-color: #303439;
+        border-width: 13px;
+        margin-left: -13px;
+      }
+
+      li {
+        cursor: pointer;
+        opacity: 0.5;
+        color: #ffffff;
+        font-size: 15px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        width: 100%;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        &.on {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  form {
+    height: 100%;
+  }
+
+  .input-wrapper {
+    height: 100%;
+    display: flex;
+    margin-left: 10px;
+    margin-right: -15px;
+    position: relative;
+
+    .bg-stretch {
+      border-left: 1px solid rgba(255, 255, 255, 0.25);
+      position: absolute;
+      background: #000;
+      width: 100%;
+      height: 64px;
+      top: -17px;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+
+    input {
+      width: 55px;
+      color: #fff;
+      padding: 0 5px 0 10px;
+      text-align: center;
+      font-size: 14px;
+      border: none;
+      background: transparent;
+      position: relative;
+      z-index: 10;
+    }
+
+    .go {
+      position: relative;
+      z-index: 10;
+      background: linear-gradient(
+        rgb(109, 113, 255) 0%,
+        rgb(36, 142, 246) 100%
+      );
+      appearance: none;
+      border: none;
+      color: #fff;
+      border-radius: 5px;
+      text-transform: uppercase;
+      font-size: 12px;
+      padding: 8px;
+      margin: 0 15px 0 5px;
+    }
+  }
+
+  .arrow-wrapper {
+    position: relative;
+
+    .arrow {
+      border: solid #fff;
+      border-width: 0 1px 1px 0;
+      display: inline-block;
+      padding: 5px;
+      margin-left: 7px;
+      position: relative;
+      top: -2px;
+
+      &.up {
+        transform: rotate(-135deg);
+      }
+      &.down {
+        transform: rotate(45deg);
+      }
+    }
+  }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}

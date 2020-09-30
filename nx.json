@@ -17,6 +17,18 @@
     "ebook-player-e2e": {
       "tags": [],
       "implicitDependencies": ["ebook-player"]
+    },
+    "e-book-player": {
+      "tags": []
+    },
+    "lib-config": {
+      "tags": []
+    },
+    "viewer-pdf": {
+      "tags": []
+    },
+    "core": {
+      "tags": []
     }
   }
 }

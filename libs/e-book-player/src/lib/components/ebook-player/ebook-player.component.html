@@ -1,0 +1,106 @@
+<div class="ebook-player-container">
+    <div class="ebook-left-drawer" [class.open]="toggle.left">
+
+    </div>
+    <div #middleDrawer class="ebook-middle-drawer">
+        <div id="mainWorksheet" class="worksheet-player-container">
+            <ebook-player-view-pdf
+                [pdfId]="pdfId"
+                [src]="pdfFilePath"
+                [renderText]="true"
+                [currentPage]="selectedPage"
+                [showAll]="true"
+                [stickToPage]="true"
+                [numEbookPages]="numEbookPages"
+                (emitPdfLoadComplete)="getPageData($event)"
+                (emitPdfRendered)="pdfRendered($event)"
+                (emitScrollPageChange)="updatePdfPage($event)"
+                (emitGotoNextChapter)="gotoNextChapter($event)">
+            </ebook-player-view-pdf>
+        </div>
+
+    <ebook-player-utility-bar *ngIf="!toggle.left && !toggle.right && numEbookPages.length > 1"
+        [class.keyboard]="isKeyboardOpen">
+        <ebook-player-pagination-controls
+        [pages]="numEbookPages"
+        [initialPage]="selectedPage.pageNumber"
+        [selectedPage]="selectedPage"
+        (changePage)="pageChange($event)">
+
+        </ebook-player-pagination-controls>
+        <div class="separator"></div>
+        <div class="quick-nav">
+          <div class="selector">
+            <div (click)="showTooltip = !showTooltip">
+              <span>Go&nbsp;</span>
+              <span>to&nbsp;</span>
+              <b>{{ quickNavSelection }}</b>
+              <div class="arrow-wrapper">
+                <span class="arrow down"></span>
+                <div class="tooltip" [class.open]="showTooltip">
+                  <div class="arrow_box">
+                    <ul>
+                      <li
+                        (click)="
+                          quickNavSelection = quickNavType.PAGE;
+                          goToInput.value = '';
+                          goToInput.focus()
+                        "
+                        [class.on]="quickNavSelection !== quickNavType.PAGE"
+                      >
+                        Page
+                      </li>
+                      <li
+                        (click)="
+                          quickNavSelection = quickNavType.CHAPTER;
+                          goToInput.value = '';
+                          goToInput.focus()
+                        "
+                        [class.on]="quickNavSelection !== quickNavType.CHAPTER"
+                      >
+                        Chapter
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <form (ngSubmit)="goToPage(goToInput.value)">
+            <div class="input-wrapper">
+              <input
+                #goToInput
+                type="number"
+                (focus)="setKeyboardFocus($event); $event.target.select()"
+                tceNumberRestrict
+                (keyup)="updateKeyboardValue($event)"
+              />
+              <button
+                class="go"
+                *ngIf="goToInput.value.length"
+                (click)="goToPage(goToInput.value)"
+              >
+                Go
+              </button>
+              <div class="bg-stretch"></div>
+            </div>
+          </form>
+        </div>
+
+    </ebook-player-utility-bar>
+
+    </div>
+    <div
+    class="ebook-right-drawer"
+    [class.open]="toggle.right"
+    *ngIf="hasChapterResources"
+  >
+  <div class="toggler right">
+    <span class="rectangle" (click)="toggleBar('right')"></span>
+  </div>
+  <div class="resource-wrapper">
+    <div> resource list </div>
+  </div>
+</div>
+
+</div>
