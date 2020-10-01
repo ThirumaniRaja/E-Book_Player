@@ -1,32 +1,19 @@
 <div class="wrapper" tceThumbnailScroll>
-    <div>Page Thumbnails</div>
-    <ul>
-      <li
-        class="thumbnail"
-        *ngFor="let pageNum of numEbookPages; let i = index"
-        (click)="selectPage(i)"
-      >
-        <div class="pdf-wrapper" [class.selected]="selectedThumbnail == i">
-          <pdf-viewer
-            [src]="pdfFilePath"
-            [page]="i + 1"
-            [original-size]="false"
-            [zoom]="0.75"
-            [autoresize]="false"
-            [render-text]="false"
-            [show-all]="false"
-            [stick-to-page]="false"
-            [show-borders]="false"
-            style="display: block;"
-          ></pdf-viewer>
+  <div>Page Thumbnails</div>
+  <ul>
+    <li class="thumbnail" *ngFor="let pageNum of numEbookPages; let i = index" (click)="selectPage(i)">
+      <div class="pdf-wrapper" [class.selected]="selectedThumbnail == i">
+        <pdf-viewer [src]="pdfFilePath" style="display: block;" [page]="i + 1" [original-size]="false" [zoom]="0.75"
+          [autoresize]="false" [render-text]="false" [show-all]="false" [stick-to-page]="false" [show-borders]="false"
+          style="display: block;">
+        </pdf-viewer>
+      </div>
+
+      <div style="text-align:center">
+        <div class="pageNum" [class.selected]="selectedThumbnail == i">
+          {{ i + 1 }}
         </div>
-  
-        <div style="text-align:center">
-          <div class="pageNum" [class.selected]="selectedThumbnail == i">
-            {{ i + 1 }}
-          </div>
-        </div>
-      </li>
-    </ul>
-  </div>
-  
+      </div>
+    </li>
+  </ul>
+</div>

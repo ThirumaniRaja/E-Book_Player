@@ -19,6 +19,7 @@ export class PageThumbnailsComponent implements OnInit {
   constructor(private ebookService :EbookService) { }
 
   ngOnInit(): void {
+    console.log("numEbookPages--------tumbbbbbbbbbbbbbb",this.pdfFilePath)
   }
   public selectPage(i: number) {
     this.ebookService.setPageSelection({

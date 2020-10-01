@@ -11,11 +11,13 @@
         <ul>
             <li>
                 <div class="book-item open">
-                    <span class="book-title">List of E-books</span>
+                    <span class="book-title">List of Chapters</span>
                 </div>
-                <ul>UL
-                    <li>
-                        li
+                <ul class="chapter-list open">
+                    
+                    <li  class="chapter-list-item" [class.open]="chapter.chapterNumber===1"  *ngFor="let chapter of chapters; let chapterIndex = index">
+                        <span class="chapter-num">{{ chapter.chapterNumber }}</span>
+                        <span class="chapter-title">{{ chapter.chapterTitle }}</span>
                     </li>
                 </ul>
             </li>

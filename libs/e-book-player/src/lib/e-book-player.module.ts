@@ -11,6 +11,8 @@ import { ViewerPdfModule } from 'libs/viewer-pdf/src/lib/viewer-pdf.module';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { CoreModule } from 'libs/core/src/lib/core.module';
 import { from } from 'rxjs';
+import { EbookService } from './services/ebook.service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -18,10 +20,12 @@ import { from } from 'rxjs';
     CoreModule,
     ViewerPdfModule,
     PdfViewerModule,
+    HttpClientModule,
     LibConfigModule.forChild(EbookPlayerComponent),
   ],
   declarations: [ThumbnailScrollDirective, BookDetailsNavComponent, EbookPlayerComponent, PageThumbnailsComponent, PlayerResourceComponent, ResourceListComponent],
   exports: [BookDetailsNavComponent, EbookPlayerComponent, PageThumbnailsComponent, PlayerResourceComponent, ResourceListComponent],
-  entryComponents: [BookDetailsNavComponent, EbookPlayerComponent, PageThumbnailsComponent, PlayerResourceComponent, ResourceListComponent]
+  entryComponents: [BookDetailsNavComponent, EbookPlayerComponent, PageThumbnailsComponent, PlayerResourceComponent, ResourceListComponent],
+  providers:[EbookService]
 })
 export class EBookPlayerModule {}

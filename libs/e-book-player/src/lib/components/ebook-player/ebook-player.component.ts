@@ -3,6 +3,7 @@ import { LibConfigService } from 'libs/lib-config/src/lib/services/lib-config.se
 import { Subscription } from 'rxjs';
 import { QuickNavType } from '../../enums/quick-nav-type.enum';
 import { Chapter, Ebook, Resource } from '../../models/curriculum.interface';
+import { EbookService } from '../../services/ebook.service';
 
 @Component({
   selector: 'ebook-player-ebook-player',
@@ -47,7 +48,7 @@ export class EbookPlayerComponent implements OnInit {
   constructor(
     private libConfigService: LibConfigService,
     private factoryResolver: ComponentFactoryResolver,
-    // public ebookService: EbookService,
+    public ebookService: EbookService,
     // public keyboardService: KeyboardService,
     // private toolbarService: ToolbarService,
     // private curriculumPlaylistService: CurriculumPlaylistService,
@@ -57,7 +58,7 @@ export class EbookPlayerComponent implements OnInit {
   ngOnInit() {
     this.numEbookPages = [0,1,2,3,4,5,6,7];
     this.selectedPage = {eventType:"click",pageNumber:1}
-    console.log("(((((((((ebokokkkkkkkkkkkkkkkkkkkk ",this.numEbookPages);
+    console.log("(((((((((ebokokkkkkkkkkkkkkkkkkkkk ",this.numEbookPages,this.selectedPage);
     // this.commonService.ebookResourcelistFlag$.subscribe(data => {
     //   this.isebookResourceOpen = data;
     // });
@@ -89,25 +90,27 @@ export class EbookPlayerComponent implements OnInit {
   //     })
   //   );
 
-  //   this.$subs.add(
-  //     this.ebookService.pageSelection$.subscribe(
-  //       page => (this.selectedPage = page)
-  //     )
-  //   );
+    this.$subs.add(
+      this.ebookService.pageSelection$.subscribe(
+        page => {this.selectedPage = page
+          console.log("selectedPage--------------------->******************************",this.selectedPage)
+        }
+      )
+    );
 
-  //   this.$subs.add(
-  //     this.ebookService.activePdf$.subscribe(pdf => {
-  //       this.pdfFilePath = pdf;
-  //     })
-  //   );
+    this.$subs.add(
+      this.ebookService.activePdf$.subscribe(pdf => {
+        this.pdfFilePath = pdf;
+      })
+    );
 
-  //   this.$subs.add(
-  //     this.ebookService.isFetching$.subscribe(fetchState => {
-  //       if (fetchState) {
-  //         this.onBeginLoadingResource();
-  //       }
-  //     })
-  //   );
+    // this.$subs.add(
+    //   this.ebookService.isFetching$.subscribe(fetchState => {
+    //     if (fetchState) {
+    //       this.onBeginLoadingResource();
+    //     }
+    //   })
+    // );
 
   //   this.$subs.add(
   //     this.ebookService.chapterFetchError$.subscribe(errMessage => {
@@ -201,8 +204,9 @@ export class EbookPlayerComponent implements OnInit {
     type: string;
     cachedCurrentTarget: any;
   }) {
+    console.log("emitkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk",emittedObject)
     if (
-      emittedObject.eventName === 'mousedown' ||
+      emittedObject.eventName === 'click' ||
       emittedObject.eventName === 'touchstart'
     ) {
       const pdfElement =
@@ -217,10 +221,10 @@ export class EbookPlayerComponent implements OnInit {
   }
 
   public updatePdfPage(currentPageObj: { currentPage: number }) {
-    // this.ebookService.setPageSelection({
-    //   pageNumber: currentPageObj.currentPage,
-    //   eventType: 'scroll'
-    // });
+    this.ebookService.setPageSelection({
+      pageNumber: currentPageObj.currentPage,
+      eventType: 'scroll'
+    });
   }
 
   public gotoNextChapter(event: any) {
@@ -231,49 +235,49 @@ export class EbookPlayerComponent implements OnInit {
     );
 
     if (currentChapterIndex + 1 <= this.selectedEbook.chapters.length - 1) {
-      // this.ebookService.setChapterSelection(
-      //   this.selectedEbook.chapters[currentChapterIndex + 1]
-      // );
-      // this.ebookService.setPageSelection({
-      //   pageNumber: 1,
-      //   eventType: 'click'
-      // });
+      this.ebookService.setChapterSelection(
+        this.selectedEbook.chapters[currentChapterIndex + 1]
+      );
+      this.ebookService.setPageSelection({
+        pageNumber: 1,
+        eventType: 'click'
+      });
     }
   }
 
   public pageChange(pageNumber: number) {
-    // this.ebookService.setPageSelection({
-    //   pageNumber: pageNumber,
-    //   eventType: 'click'
-    // });
+    this.ebookService.setPageSelection({
+      pageNumber: pageNumber,
+      eventType: 'click'
+    });
   }
 
   public goToPage(val: string) {
     const pageChapter = parseInt(val, 10);
 
     if (this.quickNavSelection === QuickNavType.PAGE) {
-      // let page = pageChapter === 0 ? 1 : pageChapter;
-      // page =
-      //   page > this.numEbookPages.length ? this.numEbookPages.length : page;
-      // this.ebookService.setPageSelection({
-      //   pageNumber: page,
-      //   eventType: 'click'
-      // });
-      // this.goToInput.nativeElement.value = page;
+      let page = pageChapter === 0 ? 1 : pageChapter;
+      page =
+        page > this.numEbookPages.length ? this.numEbookPages.length : page;
+      this.ebookService.setPageSelection({
+        pageNumber: page,
+        eventType: 'click'
+      });
+     // this.goToInput.nativeElement.value = page;
       // this.keyboardService.setCurrentInputValue(page.toString());
     } else {
       let chapterNum = pageChapter === 0 ? 1 : pageChapter;
-      // chapterNum =
-      //   pageChapter > this.selectedEbook.chapters.length
-      //     ? this.selectedEbook.chapters.length
-      //     : pageChapter;
-      // this.ebookService.setChapterSelection(
-      //   this.selectedEbook.chapters[chapterNum - 1]
-      // );
-      // this.ebookService.setPageSelection({
-      //   pageNumber: 1,
-      //   eventType: 'click'
-      // });
+      chapterNum =
+        pageChapter > this.selectedEbook.chapters.length
+          ? this.selectedEbook.chapters.length
+          : pageChapter;
+      this.ebookService.setChapterSelection(
+        this.selectedEbook.chapters[chapterNum - 1]
+      );
+      this.ebookService.setPageSelection({
+        pageNumber: 1,
+        eventType: 'click'
+      });
     }
   }
 

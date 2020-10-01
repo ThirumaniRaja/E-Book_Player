@@ -90,6 +90,7 @@ export class PaginationControlsComponent implements OnInit, OnChanges {
   }
 
   private setPage(page: number) {
+
     // get new pager object for specified page
     this.pager = paginate(
       this.pages.length,
@@ -107,6 +108,7 @@ export class PaginationControlsComponent implements OnInit, OnChanges {
     // call change page function in parent component
     this.changePage.emit(pageOfItems[0] + 1);
     this.setEllipsisPages();
+    console.log("page click",page)
   }
 
   private quizQuestionStatusPagination(i: number) {

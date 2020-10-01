@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { from } from 'rxjs';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import {LibConfigModule ,DynamicComponentManifest } from 'libs/lib-config/src/lib/lib-config/lib-config.module'
+import { HttpClient } from '@angular/common/http';
 
 const manifests: DynamicComponentManifest[] = [
   {

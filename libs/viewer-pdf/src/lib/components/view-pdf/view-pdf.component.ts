@@ -59,6 +59,12 @@ export class ViewPdfComponent  {
   public pdfCurrentPageObj: { pageNumber: number; eventType: string };
   public pdfViewerCurrentPage = 1;
 
+  constructor(){
+    this.pdfId = "pdf-d"
+    console.log("pdfId.........................",this.pdfId)
+
+  }
+
   pageRendered(e: CustomPdfEvent) {
     //on last rendered page, this fires for each page rendered
     if (e.pageNumber === this.numEbookPages.length) {

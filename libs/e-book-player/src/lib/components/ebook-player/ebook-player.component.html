@@ -11,8 +11,8 @@
           style="display: contents;"
         ></ebook-player-book-details-nav>
         <ebook-player-page-thumbnails
-          *ngIf="showThumbnails && numEbookPages.length > 0"
-          [pdfSrc]="pdfFilePath"
+
+          pdfSrc="assets/pdf/ebook.pdf"
           [numEbookPages]="numEbookPages"
           [selectedPage]="selectedPage"
           [ebooks]="ebooks"
@@ -39,6 +39,14 @@
 
     <ebook-player-utility-bar *ngIf="!toggle.left && !toggle.right && numEbookPages.length > 1"
         [class.keyboard]="isKeyboardOpen">
+
+        <ebook-player-scroll
+        [scrollContainerRef]="scrollContainerRef"
+        (emitScroll)="triggerScroll($event)">
+        </ebook-player-scroll>
+
+        <div class="separator"></div>
+        
         <ebook-player-pagination-controls
         [pages]="numEbookPages"
         [initialPage]="selectedPage.pageNumber"
@@ -117,7 +125,12 @@
     <span class="rectangle" (click)="toggleBar('right')"></span>
   </div>
   <div class="resource-wrapper">
-    <div> Resource list </div>
+    <div style="color: white;"> Resource list </div>
+     <ul>
+       <li class="rList" *ngFor ="let list of numEbookPages">
+
+       </li>
+     </ul>
   </div>
 </div>
 

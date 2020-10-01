@@ -42,6 +42,7 @@
     "core-js": "^2.5.4",
     "jw-angular-pagination": "^1.1.0",
     "jw-paginate": "^1.0.4",
+    "konva": "^4.1.6",
     "ng2-pdf-viewer": "^6.1.2",
     "pdfjs-dist": "^2.2.228",
     "rxjs": "~6.5.0",

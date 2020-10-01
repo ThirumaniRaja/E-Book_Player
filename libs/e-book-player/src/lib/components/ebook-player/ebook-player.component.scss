@@ -129,6 +129,8 @@
 .resource-wrapper {
   height: 100%;
   overflow: hidden;
+  margin: 0 auto; 
+
 }
 
 .separator {
@@ -316,4 +318,12 @@ input::-webkit-inner-spin-button {
 
 input[type='number'] {
   -moz-appearance: textfield;
+}
+
+.rList{
+  margin-top:7px;
+  height: 60px;
+  width: 100px;
+  border-radius: 3px;
+  background-color: #000;
 }

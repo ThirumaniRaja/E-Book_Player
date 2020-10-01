@@ -5,7 +5,7 @@ $background_color_2: #000000;
 
 .ebook_Panel {
     max-height: 60vh;
-    overflow: scroll;
+   // overflow: scroll;
   }
 
   .ebook_detailsPanel {
@@ -47,7 +47,56 @@ $background_color_2: #000000;
       white-space: nowrap;
       text-transform: capitalize;
       display: inline-block;
-      padding: 0 10px;
+      padding: 5px 10px;
       overflow: hidden;
+    }
+  }
+
+  .chapter-list {
+   // overflow-y: hidden;
+    max-height: 0px; /* approximate max height */
+    transition: max-height var(--animation-timing-long) ease-in-out;
+    border-left: 3px solid;
+    border-image-source: linear-gradient(180deg, #6d71ff 0%, $color_3 100%);
+    border-image-slice: 1;
+    padding-left: 8px;
+  }
+  
+  .chapter-list.open {
+    max-height: 500px;
+    margin: 10px 0;
+  }
+  
+  .chapter-list-item {
+    width: 100%;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 18px;
+    padding: 5px;
+    cursor: pointer;
+  
+    &.open {
+      background: #000;
+      color: #71b9ff;
+    }
+  
+    span {
+      display: inline-block;
+      overflow: hidden;
+    }
+    span.chapter-num {
+      width: 10%;
+    }
+    span.chapter-title {
+      width: 80%;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      text-transform: capitalize;
+      padding-right: 5px;
+      overflow: hidden;
+    }
+    span.chapter-page {
+      width: 10%;
     }
   }
