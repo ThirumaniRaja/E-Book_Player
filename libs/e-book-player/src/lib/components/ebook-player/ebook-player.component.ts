@@ -18,7 +18,7 @@ export class EbookPlayerComponent implements OnInit {
   };
   public hasChapterResources = false;
   public showThumbnails = false;
-  public numEbookPages: any[] = [0,1,2,3,4,5,6,7];
+  public numEbookPages: any[] = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
   public pdfFilePath: any;
   public ebooks: Ebook[];
   public selectedEbook: Ebook;
@@ -49,47 +49,13 @@ export class EbookPlayerComponent implements OnInit {
     private libConfigService: LibConfigService,
     private factoryResolver: ComponentFactoryResolver,
     public ebookService: EbookService,
-    // public keyboardService: KeyboardService,
-    // private toolbarService: ToolbarService,
-    // private curriculumPlaylistService: CurriculumPlaylistService,
-    // private commonService: CommonService
+   
   ) { }
 
   ngOnInit() {
-    this.numEbookPages = [0,1,2,3,4,5,6,7];
     this.selectedPage = {eventType:"click",pageNumber:1}
     console.log("(((((((((ebokokkkkkkkkkkkkkkkkkkkk ",this.numEbookPages,this.selectedPage);
-    // this.commonService.ebookResourcelistFlag$.subscribe(data => {
-    //   this.isebookResourceOpen = data;
-    // });
-    //this.scrollContainerRef = this.middleDrawer.nativeElement.querySelector('.pdfContentArea');
-
-  //   this.$subs.add(
-  //     this.ebookService.ebooks$.subscribe(ebooks => 
-  //       {
-  //         this.ebooks = ebooks
-  //         console.log("(((((((((((((((((((((((((((((((((((((((((((((((((ebook)))))))))))))))))))))))))))))))))))))))))))))))))",ebooks)
-  //       }
-         
-  //         )
-  //   );
-
-  //   this.$subs.add(
-  //     this.ebookService.ebookSelection$.subscribe(
-  //       ebook => (this.selectedEbook = ebook)
-  //     )
-  //   );
-
-  //   this.$subs.add(
-  //     this.ebookService.chapterSelection$.subscribe(chapter => {
-  //       if (this.goToInput) {
-  //         this.goToInput.nativeElement.value = '';
-  //       }
-  //       this.selectedChapter = chapter;
-  //       this.showThumbnails = true;
-  //     })
-  //   );
-
+    
     this.$subs.add(
       this.ebookService.pageSelection$.subscribe(
         page => {this.selectedPage = page
@@ -104,63 +70,11 @@ export class EbookPlayerComponent implements OnInit {
       })
     );
 
-    // this.$subs.add(
-    //   this.ebookService.isFetching$.subscribe(fetchState => {
-    //     if (fetchState) {
-    //       this.onBeginLoadingResource();
-    //     }
-    //   })
-    // );
-
-  //   this.$subs.add(
-  //     this.ebookService.chapterFetchError$.subscribe(errMessage => {
-  //       if (errMessage) {
-  //         this.onResourceLoadError('Error Loading Chapter Resource');
-  //       } else {
-  //         this.errorMessage = '';
-  //       }
-  //     })
-  //   );
-
-  //   this.$subs.add(
-  //     this.ebookService.chapterResources$.subscribe(resources => {
-  //       this.chapterResources = resources;
-  //       //console.log('this.chapterResources', this.chapterResources);
-  //       this.hasChapterResources = resources.length > 0;
-  //     })
-  //   );
-
-  //   this.$subs.add(
-  //     this.keyboardService.keyboardDisplayState$.subscribe(obj => {
-  //       this.isKeyboardOpen = !!+obj.state;
-  //     })
-  //   );
-
-  //   this.$subs.add(
-  //     this.keyboardService.keyboardEnterPress$.subscribe(inputVal => {
-  //       if (!this.goToInput) {
-  //         return;
-  //       }
-  //       if (this.goToInput.nativeElement.value === inputVal) {
-  //         this.goToPage(this.goToInput.nativeElement.value);
-  //       }
-  //     })
-  //   );
-  //   this.curriculumPlaylistService.fullContentSelection$.subscribe(chapters => {
-  //     //console.log('ebook--->chapters', chapters);
-  //     if (chapters) {
-  //       this.currentChapterId = chapters.chapter.chapterId;
-  //     }
-  //   });
+   
   }
 
   public beginLoadingResource() {
-    //console.log('beginLoadingResource', this.resource);
-    //new code
-    // console.log(
-    //   'TCL: beginLoadingResource -> (this.currentChapterId',
-    //   this.currentChapterId
-    // );
+   
     if (this.currentChapterId) {
       //this.ebookService.setResourceData(this.resource, this.currentChapterId);
     }
@@ -178,7 +92,7 @@ export class EbookPlayerComponent implements OnInit {
     currentPage: number;
     source: any;
   }) {
-    //this.onEndLoadingResource();
+   
   }
 
   public getPageData(pdf: any) {
@@ -192,7 +106,6 @@ export class EbookPlayerComponent implements OnInit {
     } else {
       this.toggle.right = !this.toggle.right;
     }
-  //  this.keyboardService.closeKeyboard();
   }
 
   public toggleThumbnails(event: any) {
@@ -263,8 +176,7 @@ export class EbookPlayerComponent implements OnInit {
         pageNumber: page,
         eventType: 'click'
       });
-     // this.goToInput.nativeElement.value = page;
-      // this.keyboardService.setCurrentInputValue(page.toString());
+    
     } else {
       let chapterNum = pageChapter === 0 ? 1 : pageChapter;
       chapterNum =
@@ -282,17 +194,10 @@ export class EbookPlayerComponent implements OnInit {
   }
 
   public updateKeyboardValue(e: KeyboardEvent) {
-    // this.keyboardService.setCurrentInputValue(
-    //   this.goToInput.nativeElement.value
-    // );
+    
   }
 
   public setKeyboardFocus(e: FocusEvent) {
-    // const obj = {
-    //   inputPattern: /^[0-9]*$/,
-    //   state: KeyboardState.OPEN,
-    //   theme: KeyboardTheme.NUMERIC
-    // };
-    // this.keyboardService.openKeyboard(<HTMLElement>e.target, obj);
+    
   }
 }

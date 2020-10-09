@@ -98,16 +98,7 @@ export class AnnotationComponent implements OnInit {
   }
 
   ngOnInit() {
-    // const defaultpensize = this.appConfigService.getConfig('global_setting')[
-    //   'default-stroke-size'
-    // ];
-    // this.strokeWidth = parseInt(defaultpensize, 10);
-    // this.toolbarService.currentPenSize.subscribe(data => {
-    //   if (data) {
-    //     this.selectedPenSize = data;
-    //     this.strokeWidth = parseInt(this.selectedPenSize, 10);
-    //   }
-    // });
+   
     if (
       this.canvasContext === ResourceType.TCEVIDEO ||
       this.canvasContext === ResourceType.QUIZ
@@ -122,14 +113,7 @@ export class AnnotationComponent implements OnInit {
         // );
       }
     }
-    // this.toolbarService.currentSelectedTool$.subscribe(tool => {
-    //   this.currentTool = tool;
-    //   this.toggleVisiblity();
-    // });
-    // this.toolbarService.selectedToolColor$.subscribe(
-    //   toolColor => (this.currentToolColor = toolColor)
-    // );
-
+   
     if (!this.ignoreScale) {
       // this.panzoomService.currentZoomScale$.subscribe(
       //   newScale => (this.currentScale = newScale)
@@ -162,9 +146,7 @@ export class AnnotationComponent implements OnInit {
     const parentElement = this.sizingReferenceElement;
     window.addEventListener('resize', this.resizeStage.bind(this));
     parentElement.addEventListener('scroll', this.repositionStage.bind(this));
-    // this.contentResizeService.resizeContent$.subscribe(() => {
-    //   this.resizeStage();
-    // });
+   
   }
 
   createOrLoadKonvaStage() {
@@ -302,9 +284,7 @@ export class AnnotationComponent implements OnInit {
     this.isDrawing = false;
 
     if (this.annotationBehavior === 'fade') {
-      // const fadeOutDelay = this.appConfigService.getConfig('global_setting')[
-      //   'annotationFadeOutDelay'
-      // ];
+     
 
       this.annotationTimeout = setTimeout(() => {
         this.fadeLayer();
