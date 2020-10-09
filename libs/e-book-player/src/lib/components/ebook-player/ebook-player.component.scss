@@ -7,12 +7,16 @@
   }
 }
 .ebook-player-container {
-  margin-top: 20px;
+  // margin-top: 20px;
+  // position: relative;
+  // width: 60%;
+  // height: 60%;
+  // padding: 0px !important;
+  // background: transparent !important;
+  // display: flex;
+  // flex-direction: row;
+  // flex-wrap: nowrap;
   position: relative;
-  width: 60%;
-  height: 60%;
-  padding: 0px !important;
-  background: transparent !important;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -129,8 +133,7 @@
 .resource-wrapper {
   height: 100%;
   overflow: hidden;
-  margin: 0 auto; 
-
+  margin: 0 auto;
 }
 
 .separator {
@@ -320,8 +323,8 @@ input[type='number'] {
   -moz-appearance: textfield;
 }
 
-.rList{
-  margin-top:7px;
+.rList {
+  margin-top: 7px;
   height: 60px;
   width: 100px;
   border-radius: 3px;
