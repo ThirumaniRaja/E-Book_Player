@@ -1,0 +1,65 @@
+<div class="pagination-wrapper">
+    <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+      <li class="page-item previous-item">
+        <a (click)="setPage(pager.currentPage - 1)" class="page-link">
+          <img
+            class="arrow-icon"
+            src="assets/images/ic.Navigate.Arrow.svg"
+
+            [ngClass]="{ 'pagination-disable': pager.currentPage === 1 }"
+          >
+        </a>
+      </li>
+      <li
+        *ngFor="let page of ellipsisStartPages; let i = index"
+        class="page-item number-item"
+        [ngClass]="{
+          correct: quizQuestionStatus(i) === 'correct',
+          incorrect: quizQuestionStatus(i) === 'incorrect'
+        }"
+      >
+        <a (click)="setPage(page + 1)" class="page-link">{{ page + 1 }}</a>
+      </li>
+      <li *ngIf="pager.startPage > 2" class="ellipsis">&hellip;</li>
+      <li
+        *ngFor="let page of pager.pages; let i = index"
+        [ngClass]="{
+          active: pager.currentPage === page,
+          correct: quizQuestionStatusPagination(i) === 'correct',
+          incorrect: quizQuestionStatusPagination(i) === 'incorrect'
+        }"
+        class="page-item number-item"
+      >
+        <a (click)="setPage(page)" class="page-link">{{ page }}</a>
+      </li>
+      <li class="ellipsis" *ngIf="pager.endPage + 1 < pager.totalItems">
+        &hellip;
+      </li>
+      <li
+        *ngFor="let page of ellipsisEndPages; let i = index"
+        class="page-item number-item"
+        [ngClass]="{
+          correct:
+            quizQuestionStatus(pages.length - ellipsisEndPages.length + i) ===
+            'correct',
+          incorrect:
+            quizQuestionStatus(pages.length - ellipsisEndPages.length + i) ===
+            'incorrect'
+        }"
+      >
+        <a (click)="setPage(page + 1)" class="page-link">{{ page + 1 }}</a>
+      </li>
+      <li class="page-item next-item">
+        <a (click)="setPage(pager.currentPage + 1)" class="page-link">
+          <img
+            class="arrow-icon"
+            src="assets/images/ic.Navigate.Arrow.svg"
+            [ngClass]="{
+              'pagination-disable': pager.currentPage === pages.length
+            }"
+          >
+        </a>
+      </li>
+    </ul>
+  </div>
+  

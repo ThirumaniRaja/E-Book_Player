@@ -1,0 +1,7 @@
+$loading-spinner-z-index: 1000;
+
+$error-layover-z-index: $loading-spinner-z-index - 2;
+
+$player-annotation-layer-z-index: 5;
+
+$player-layover-elements-z-index: $error-layover-z-index + 1;
